@@ -1,0 +1,93 @@
+openapi: 3.0.3
+info:
+  title: Customer Events API
+  description: API for capturing customer events such as billing issues, errors, etc.
+  version: 1.0.0
+servers:
+  - url: https://api.yourdomain.com
+    description: Main API server
+paths:
+  /events:
+    post:
+      summary: Capture a customer event
+      description: Endpoint to record a customer event with details like event type, severity, and notification flag.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EventRequest'
+      responses:
+        '201':
+          description: Event successfully created
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  eventId:
+                    type: string
+                    example: efgh-5678-abcd-1234
+                  message:
+                    type: string
+                    example: Event recorded successfully
+        '400':
+          description: Invalid input provided
+        '500':
+          description: Internal server error
+      x-speakeasy-group: events
+      x-speakeasy-name-override: capture
+components:
+  schemas:
+    EventRequest:
+      type: object
+      required:
+        - event
+        - body
+        - customer
+        - notify
+      properties:
+        event:
+          type: string
+          description: The type of the event, e.g., 'Billing Issue'
+          example: Billing Issue
+        body:
+          type: string
+          description: Detailed information about the event.
+          example: Could not renew subscription
+        customer:
+          type: object
+          required:
+            - customerId
+          properties:
+            customerId:
+              type: string
+              description: Internal customer ID
+              example: xxxx
+            externalId:
+              type: string
+              description: External system ID, if applicable
+              example: ext-1234
+            email:
+              type: string
+              description: Email address of the customer
+              format: email
+              example: customer@example.com
+        severity:
+          type: string
+          description: The severity of the event
+          enum:
+            - info
+            - warning
+            - critical
+          default: info # Severity defaults to 'info'
+          example: warning
+        notify:
+          type: boolean
+          description: Whether or not to notify the customer or support team
+          example: true
+        timestamp:
+          type: string
+          format: date-time
+          description: Optional timestamp of when the event occurred. If not provided, the server will generate one.
+          example: 2024-10-21T12:34:56Z

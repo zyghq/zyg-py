@@ -1,0 +1,19 @@
+overlay: 1.0.0
+info:
+  title: Speakeasy Modifications
+  version: 0.0.2
+  x-speakeasy-metadata:
+    after: ""
+    before: ""
+    type: speakeasy-modifications
+actions:
+  - target: $["paths"]["/events"]["post"]
+    update:
+      x-speakeasy-group: events
+      x-speakeasy-name-override: capture
+    x-speakeasy-metadata:
+      type: method-name
+      before: sdk.<no_group>.post_/events()
+      after: sdk.events.capture()
+      reviewed_at: 1729514577619
+      created_at: 1729514569115

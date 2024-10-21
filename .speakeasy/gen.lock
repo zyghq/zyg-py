@@ -1,0 +1,89 @@
+lockVersion: 2.0.0
+id: e8c5e089-e539-4175-94ac-6f95d8b5152e
+management:
+  docChecksum: 6d146b664e967db194e24b63dba7f87b
+  docVersion: 1.0.0
+  speakeasyVersion: 1.419.2
+  generationVersion: 2.438.15
+  releaseVersion: 0.1.0
+  configChecksum: a437849193039bed4eb9c4f55c02da77
+features:
+  python:
+    additionalDependencies: 1.0.0
+    constsAndDefaults: 1.0.4
+    core: 5.6.0
+    defaultEnabledRetries: 0.2.0
+    devContainers: 3.0.0
+    enumUnions: 0.1.0
+    envVarSecurityUsage: 0.3.1
+    globalSecurityCallbacks: 1.0.0
+    globalServerURLs: 3.0.0
+    groups: 3.0.0
+    methodArguments: 1.0.2
+    nameOverrides: 3.0.0
+    responseFormat: 1.0.1
+    retries: 3.0.2
+    sdkHooks: 1.0.0
+generatedFiles:
+  - .devcontainer/README.md
+  - .devcontainer/devcontainer.json
+  - .devcontainer/setup.sh
+  - .gitattributes
+  - .python-version
+  - .vscode/settings.json
+  - CONTRIBUTING.md
+  - USAGE.md
+  - docs/models/customer.md
+  - docs/models/eventrequest.md
+  - docs/models/posteventsresponsebody.md
+  - docs/models/severity.md
+  - docs/models/utils/retryconfig.md
+  - docs/sdks/events/README.md
+  - docs/sdks/zygpy/README.md
+  - poetry.toml
+  - py.typed
+  - pylintrc
+  - pyproject.toml
+  - scripts/compile.sh
+  - scripts/prepare-readme.py
+  - scripts/publish.sh
+  - src/zyg_py/__init__.py
+  - src/zyg_py/_hooks/__init__.py
+  - src/zyg_py/_hooks/sdkhooks.py
+  - src/zyg_py/_hooks/types.py
+  - src/zyg_py/_version.py
+  - src/zyg_py/basesdk.py
+  - src/zyg_py/events.py
+  - src/zyg_py/httpclient.py
+  - src/zyg_py/models/__init__.py
+  - src/zyg_py/models/eventrequest.py
+  - src/zyg_py/models/post_eventsop.py
+  - src/zyg_py/models/sdkerror.py
+  - src/zyg_py/py.typed
+  - src/zyg_py/sdk.py
+  - src/zyg_py/sdkconfiguration.py
+  - src/zyg_py/types/__init__.py
+  - src/zyg_py/types/basemodel.py
+  - src/zyg_py/utils/__init__.py
+  - src/zyg_py/utils/annotations.py
+  - src/zyg_py/utils/enums.py
+  - src/zyg_py/utils/eventstreaming.py
+  - src/zyg_py/utils/forms.py
+  - src/zyg_py/utils/headers.py
+  - src/zyg_py/utils/logger.py
+  - src/zyg_py/utils/metadata.py
+  - src/zyg_py/utils/queryparams.py
+  - src/zyg_py/utils/requestbodies.py
+  - src/zyg_py/utils/retries.py
+  - src/zyg_py/utils/security.py
+  - src/zyg_py/utils/serializers.py
+  - src/zyg_py/utils/url.py
+  - src/zyg_py/utils/values.py
+examples:
+  post_/events:
+    speakeasy-default-post-/events:
+      requestBody:
+        application/json: {"event": "Billing Issue", "body": "Could not renew subscription", "customer": {"customerId": "xxxx", "externalId": "ext-1234", "email": "customer@example.com"}, "severity": "warning", "notify": true, "timestamp": "2024-10-21T12:34:56Z"}
+      responses:
+        "201":
+          application/json: {"eventId": "efgh-5678-abcd-1234", "message": "Event recorded successfully"}

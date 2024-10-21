@@ -1,0 +1,28 @@
+speakeasyVersion: 1.419.2
+sources:
+    zyg-py-OAS:
+        sourceNamespace: zyg-py-oas
+        sourceRevisionDigest: sha256:d5369cba6aa72095cc65af0a87613f48bf0588ac255623736c725378b5674bc5
+        sourceBlobDigest: sha256:8861f80c5c509164cb0cd0d53faf6531858b7b4dea6e296feab3e4096a31ba0a
+        tags:
+            - latest
+targets:
+    zyg-py:
+        source: zyg-py-OAS
+        sourceNamespace: zyg-py-oas
+        sourceRevisionDigest: sha256:d5369cba6aa72095cc65af0a87613f48bf0588ac255623736c725378b5674bc5
+        sourceBlobDigest: sha256:8861f80c5c509164cb0cd0d53faf6531858b7b4dea6e296feab3e4096a31ba0a
+workflow:
+    workflowVersion: 1.0.0
+    sources:
+        zyg-py-OAS:
+            inputs:
+                - location: ../playground/spec.yaml
+            overlays:
+                - location: .speakeasy/speakeasy-modifications-overlay.yaml
+            registry:
+                location: registry.speakeasyapi.dev/zyghq/zyghq/zyg-py-oas
+    targets:
+        zyg-py:
+            target: python
+            source: zyg-py-OAS
